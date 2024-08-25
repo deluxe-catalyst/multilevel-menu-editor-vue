@@ -98,7 +98,7 @@ const updateTitle = (newTitle) => (parentTitle.value = newTitle);
 watch(
     inputs,
     (newVal) => {
-        setErrors(newVal);
+        setErrors(newVal, action);
 
         store.dispatch("modalStore/setModalContentItem", {
             title: newVal.title,

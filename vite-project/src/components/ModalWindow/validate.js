@@ -2,10 +2,10 @@ import store from "../../store/store";
 
 
 const validate = (inputs, formErrors, action) => {
-    const handleItemParentId = store.getters['modalStore/getHandleItem'].parent_id;
+    const handleItem = store.getters['modalStore/getHandleItem'];
     const menuItems = store.getters['menuStore/getMenuItems'];
-    const findItem = findLink(inputs.link, menuItems, handleItemParentId);
-        
+    const findItem = findLink(inputs.link, menuItems, handleItem);
+    
     if (inputs.content.length < 3) {
         formErrors.content = 'Не короче 3-х символов';
     }
@@ -39,7 +39,7 @@ const validate = (inputs, formErrors, action) => {
     else if (slashes > 1) {
         formErrors.link = 'Ссылка может содержать один /';
     }
-    else if(findItem && action === 'create'){
+    else if(findItem){
         formErrors.link = `Ссылка занята пунктом ${findItem.title}`;
     }
     else{
@@ -49,9 +49,9 @@ const validate = (inputs, formErrors, action) => {
     return formErrors;
 }
 
-function findLink(inputLink, menuItems, handleItemParentId){
+function findLink(inputLink, menuItems, handleItem){
     
-    const item = menuItems.find(item => item.link === inputLink && item.parent_id === handleItemParentId);
+    const item = menuItems.find(item => item.link === inputLink && item.parent_id === handleItem.parent_id && item.id !== handleItem.id);
     
     if (item) {
         return item;
