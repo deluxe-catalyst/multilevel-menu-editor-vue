@@ -1,0 +1,37 @@
+button{
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    transition: .2s;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+button:hover{
+    transform: scale(.95);
+}
+
+.button-blue{
+    background-color: var(--blue-color);
+    color: white;
+}
+
+.button-red{
+    background-color: var(--red-color);
+    color: white;
+}
+
+.button-gray{
+    background-color: var(--gray-color);
+    color: black;
+    cursor:not-allowed;
+}
+
+.button-green{
+    background-color: var(--green-color);
+    color: white;
+} 

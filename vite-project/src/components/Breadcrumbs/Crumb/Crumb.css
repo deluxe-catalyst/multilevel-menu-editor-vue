@@ -1,0 +1,24 @@
+
+.container__crumb{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container__link{
+    background-color: rgb(240, 240, 240);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: .1s;
+    color: black;
+}
+
+.container__link:hover{
+    background-color: var(--blue-color);
+    color: white;
+}
+
+.img{
+    width: 12px;
+    transform: rotate(-90deg);
+}

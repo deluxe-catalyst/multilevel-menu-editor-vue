@@ -1,0 +1,14 @@
+.menu-container{
+    height: 100%;
+    display: flex;
+    width: 100%;
+}
+
+.menu-wrapper{
+    min-width: 300px;
+}
+
+.manage-buttons{
+    margin-bottom: 10px;
+}
+

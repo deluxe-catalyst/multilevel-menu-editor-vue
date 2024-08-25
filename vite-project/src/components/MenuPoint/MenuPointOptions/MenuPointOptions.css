@@ -1,0 +1,16 @@
+.manage-menu__box{
+    position: absolute;
+    bottom: 100%;
+    display: none;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--gray-color);
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+.buttons__manage-menu:hover .manage-menu__box, .manage-menu__box:hover{
+    display: flex;
+}
+
