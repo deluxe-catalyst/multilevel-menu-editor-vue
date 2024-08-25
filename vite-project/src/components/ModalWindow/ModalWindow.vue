@@ -76,7 +76,7 @@ const handleModalItem = store.getters["modalStore/getHandleItem"];
 
 onMounted(() => {    
     if (action === "create" || action === "edit") {
-        setErrors(inputs.value);
+        setErrors(inputs.value, action);
         if (handleModalItem.parent_id === null) {
             parentTitle.value = advancedEditModalItem[0].title;
         } else {
@@ -115,8 +115,8 @@ function axiosSubmit() {
 
 const closeModal = () => store.dispatch("modalStore/resetStore");
 
-function setErrors(inputs) {
-    const errors = validate(inputs, formErrors.value);
+function setErrors(inputs, action) {
+    const errors = validate(inputs, formErrors.value, action);
     formErrors.value = errors;
     if (!errors.title && !errors.link && !errors.content) {
         formDone.value = true;

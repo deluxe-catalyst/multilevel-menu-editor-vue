@@ -8,7 +8,7 @@
             <img class="arrow-btn" src="../../assets/svg/ph_caret-down-bold.svg" />
             <div v-if="menuVisible" class="dropdown__menu">
                 <div class="menu__item advanced-item" v-for="item in advancedItems" :key="item.id"
-                    @click="setParentItem(item)">
+                    @click.stop="setParentItem(item)">
                     {{ item.title }}
                 </div>
                 <div class="menu__item" v-for="item in menuItems" :key="item.id" @click.stop="setParentItem(item)">

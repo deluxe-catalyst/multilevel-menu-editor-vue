@@ -1,11 +1,11 @@
 import store from "../../store/store";
 
 
-const validate = (inputs, formErrors) => {
+const validate = (inputs, formErrors, action) => {
     const handleItemParentId = store.getters['modalStore/getHandleItem'].parent_id;
     const menuItems = store.getters['menuStore/getMenuItems'];
     const findItem = findLink(inputs.link, menuItems, handleItemParentId);
-
+        
     if (inputs.content.length < 3) {
         formErrors.content = 'Не короче 3-х символов';
     }
@@ -39,8 +39,7 @@ const validate = (inputs, formErrors) => {
     else if (slashes > 1) {
         formErrors.link = 'Ссылка может содержать один /';
     }
-    else if(findItem){
-        
+    else if(findItem && action === 'create'){
         formErrors.link = `Ссылка занята пунктом ${findItem.title}`;
     }
     else{
