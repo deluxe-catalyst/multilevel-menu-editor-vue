@@ -20,7 +20,7 @@
 1. Клонируйте репозиторий:
 
     ```bash
-    git clone <URL_вашего_репозитория>
+    git clone https://github.com/deluxe-catalyst/multilevel-menu-editor-vue.git
     ```
 
 2. Перейдите в директорию проекта:
