@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const hostLinkApi = 'http://localhost:3000/api';
+const hostLinkApi = `http://localhost:${import.meta.env.VITE_BACKEND_PORT}/api`;
 
 const axiosInstance = axios.create({
     baseURL: hostLinkApi,

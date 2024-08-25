@@ -1,11 +1,10 @@
 const express = require('express');
 const jsontoken = require('jsonwebtoken');
 const cors = require('cors');
-
 const {sequelize, User, MenuItem} = require('./models');
 const {authToken, checkAdminRules} = require('./middleware');
 
-const port = process.env.PORT || 3000;
+const port = process.env.VITE_BACKEND_PORT;
 
 const app = express();
 

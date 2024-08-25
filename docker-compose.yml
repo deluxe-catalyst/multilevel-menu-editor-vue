@@ -1,12 +1,12 @@
-version: '3.8'
-
 services:
   vue-app:
     build:
       context: ./vite-project
       dockerfile: Dockerfile
     ports:
-      - "8080:5173"
+      - "${VITE_PORT}:5173"
+    env_file:
+      - .env
     volumes:
       - ./vite-project:/app
       - /app/node_modules
@@ -19,7 +19,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: menu_db
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -27,15 +27,18 @@ services:
   backend:
     build: ./server
     ports:
-      - "3000:3000"
+      - "${VITE_BACKEND_PORT}:${VITE_BACKEND_PORT}"
+    env_file:
+      - .env
     environment:
-      - DATABASE_URL=postgres://user:password@db:5432/menu_db
+      - DATABASE_URL=postgres://user:password@db:${DB_PORT}/menu_db
     volumes:
       - ./server:/app
       - /app/node_modules
     depends_on:
       - db
-    command: bash -c "while !</dev/tcp/db/5432; do sleep 0.1; done; npm run dev"
+    command: bash -c "until pg_isready -h db -p ${DB_PORT}; do sleep 1; done; npm run dev"
+
 
 volumes:
   postgres_data:
