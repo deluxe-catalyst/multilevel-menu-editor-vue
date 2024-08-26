@@ -44,16 +44,44 @@
     box-sizing: border-box;
     background-color: white;
     border: 2px solid var(--gray-color);
-    height: 200px;
     overflow-y: auto;
-    transition: .3s;
+    animation: animIn .8s forwards;
+    transition: .2s;
 }
 
 .dropdown__menu--hide{
     pointer-events: none;
-    height: 0;
-    transition: height 0.3s opacity 1s;
-    border: 2px solid transparent;
+    animation: animOut .25s forwards !important;
+}
+
+@keyframes animIn{
+    0%{
+        height: 0;
+    }
+    30%{
+        height: 240px;
+    }
+    60%{
+        height: 190px;
+    }
+    100%{
+        height: 200px;
+    }
+}
+
+@keyframes animOut {
+    0%{
+        height: 200px;
+    }
+    70%{
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100%{
+        height: 0px;
+        filter: blur(10px);
+        opacity: 0;
+    }
 }
 
 .menu__item:hover {
