@@ -30,7 +30,7 @@
     width: 16px;
 }
 
-.dropdown__menu {
+.dropdown__menu--hide, .dropdown__menu--show {
     overflow: hidden;
     margin-top: 4px;
     border-radius: 6px;
@@ -44,15 +44,23 @@
     box-sizing: border-box;
     background-color: white;
     border: 2px solid var(--gray-color);
-    max-height: 200px;
+    height: 200px;
     overflow-y: auto;
+    transition: .3s;
+}
+
+.dropdown__menu--hide{
+    pointer-events: none;
+    height: 0;
+    transition: height 0.3s opacity 1s;
+    border: 2px solid transparent;
 }
 
 .menu__item:hover {
     background-color: var(--gray-color);
 }
 
-.menu__item {
+.menu__item{
     flex-shrink: 0;
     box-sizing: border-box;
     text-align: left;
@@ -62,6 +70,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px;
+    transition: .3s;
 }
 
 .advanced-item {
