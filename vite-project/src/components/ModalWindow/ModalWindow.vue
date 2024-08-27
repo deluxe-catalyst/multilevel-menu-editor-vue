@@ -18,12 +18,7 @@
                         Вы действительно хотите удалить пункт меню и его дочерние подпункты?
                     </h3>
 
-                    <Button :classProp="action === 'delete'
-                            ? 'button-red'
-                            : formDone === true
-                                ? 'button-blue'
-                                : 'button-gray'
-                        " @click.prevent="axiosSubmit">
+                    <Button :classProp="action === 'delete' ? 'button-red': formDone === true ? 'button-blue' : 'button-gray'" @click.prevent="axiosSubmit(action)">
                         {{ buttonActions[action] }}
                     </Button>
                 </form>
@@ -110,6 +105,10 @@ watch(
 );
 
 function axiosSubmit() {
+    if(action === 'delete'){
+        store.dispatch("modalStore/axiosSubmit", action);
+        return;
+    }
     if (formDone.value === true) store.dispatch("modalStore/axiosSubmit", action);
 }
 
